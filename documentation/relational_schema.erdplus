@@ -1,0 +1,659 @@
+{
+  "diagramType": 2,
+  "data": {
+    "nodes": [
+      {
+        "id": "a1b715fc-88de-45b1-aa7e-28e83bdf7265",
+        "type": "Table",
+        "position": {
+          "x": 1166.9999999999995,
+          "y": 395.99999999999966
+        },
+        "data": {
+          "label": "users",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "8edaa6d2-5a4e-41aa-aaed-5e601a21f56c",
+              "name": "user_id",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false,
+              "isUnique": false,
+              "size": "SERIAL"
+            },
+            {
+              "id": "88e819e0-46bf-439d-98ea-7b99e6f055b3",
+              "name": "email",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "TEXT",
+              "isPrimaryKey": false,
+              "isUnique": true
+            },
+            {
+              "id": "fa866d98-6e73-43c8-9ee4-baf99f92cb3e",
+              "name": "username",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "TEXT",
+              "isPrimaryKey": false,
+              "isUnique": true
+            },
+            {
+              "id": "f13941e1-85b8-41da-8d80-6878c7560ad4",
+              "name": "password_hash",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "TEXT",
+              "isPrimaryKey": false,
+              "isUnique": false
+            },
+            {
+              "id": "99bf614c-e53d-4cd7-a864-5f6c4f41acfa",
+              "name": "created_at",
+              "type": "DATE",
+              "position": 0,
+              "isPrimaryKey": false,
+              "isUnique": false,
+              "size": "TIMESTAMPTZ"
+            }
+          ],
+          "isSelected": false,
+          "isFactTable": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 151
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "aab548b5-4b2d-4650-9d3d-783336ec374f",
+        "type": "Table",
+        "position": {
+          "x": 864.0000000000009,
+          "y": 354.99999999999983
+        },
+        "data": {
+          "label": "publishers",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "d7cf00b1-48fa-4c42-89d5-8a712caa13d1",
+              "name": "publisher_id",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false,
+              "isUnique": false,
+              "size": "SERIAL"
+            },
+            {
+              "id": "cb36d6ad-4eeb-4b0b-bd79-e6bb676da35c",
+              "name": "name",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "TEXT",
+              "isPrimaryKey": false,
+              "isUnique": true
+            },
+            {
+              "id": "57229c4a-327e-4587-bb27-a92d9070ae7b",
+              "name": "created_at",
+              "type": "DATE",
+              "position": 0,
+              "isPrimaryKey": false,
+              "isUnique": false
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 101
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "616767af-67fa-468f-ad8f-9727133992f4",
+        "type": "Table",
+        "position": {
+          "x": 1168.0000000000002,
+          "y": 140.00000000000006
+        },
+        "data": {
+          "label": "games",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "5fc7e4d0-869b-4d7b-9046-7be8d67dbaf8",
+              "name": "game_id",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false,
+              "isUnique": false
+            },
+            {
+              "id": "61f1d436-e6eb-4923-a1ef-dafa190176e8",
+              "name": "title",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "255",
+              "isPrimaryKey": false,
+              "isUnique": true,
+              "isOptional": false
+            },
+            {
+              "id": "6fdf0bbe-488c-4825-8d08-a368368d67c5",
+              "name": "description",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "1000",
+              "isPrimaryKey": false,
+              "isUnique": false,
+              "isOptional": true
+            },
+            {
+              "id": "c1ba97a8-71ad-4d9d-8476-44a02445b29c",
+              "name": "price",
+              "type": "NUMERIC(p s)",
+              "position": 0,
+              "size": "8,2",
+              "isPrimaryKey": false,
+              "isUnique": false,
+              "isOptional": false
+            },
+            {
+              "id": "3b1821fc-6fea-4ae9-9a78-040309372686",
+              "name": "release_date",
+              "type": "DATE",
+              "position": 0,
+              "size": "T",
+              "isPrimaryKey": false,
+              "isUnique": false,
+              "isOptional": true
+            },
+            {
+              "id": "4b6aba2b-1bc0-4daf-9bb9-7ce1fcd0369b",
+              "name": "is_active",
+              "type": "Custom",
+              "position": 0,
+              "size": "BOOLEAN",
+              "isPrimaryKey": false,
+              "isUnique": false,
+              "isOptional": false
+            },
+            {
+              "id": "0dca2ab3-61b6-4205-ab1a-d7bac2e682d3",
+              "name": "created_at",
+              "type": "DATE",
+              "position": 0,
+              "size": "TIMESTAMPTZ",
+              "isPrimaryKey": false,
+              "isUnique": false,
+              "isOptional": false
+            },
+            {
+              "id": "fk_ff3d26e6-572f-47f4-9f22-2452a34fd7f2",
+              "name": "fk_publishers",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "1167e974-61da-47d9-806a-fe05b3f4b6f4",
+                "sourceTableId": "aab548b5-4b2d-4650-9d3d-783336ec374f",
+                "columns": [
+                  {
+                    "id": "fk_d7cf00b1-48fa-4c42-89d5-8a712caa13d1",
+                    "name": "publisher_id",
+                    "type": "INT",
+                    "size": "SERIAL"
+                  }
+                ]
+              }
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 227
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "a8e7e80a-91c0-4ef3-97d2-ef97ab2b28f9",
+        "type": "Table",
+        "position": {
+          "x": 866.0000000000002,
+          "y": 245.00000000000057
+        },
+        "data": {
+          "label": "genres",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "9075b9a8-1ce0-44f7-8ae1-02b799001a44",
+              "name": "genre_id",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false,
+              "isUnique": false
+            },
+            {
+              "id": "04c166de-3e0d-43f5-b060-340d831c6f38",
+              "name": "name",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "isPrimaryKey": false,
+              "isUnique": true
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 76
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "ac5428ec-ee29-4a39-a704-4ece5be57da9",
+        "type": "Table",
+        "position": {
+          "x": 865.0000000000007,
+          "y": 140.0000000000007
+        },
+        "data": {
+          "label": "game_genres",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fk_228b0676-80e1-46c1-8add-8a0cd0e97fa8",
+              "name": "fk_games",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "3dd1f942-9639-4db9-a430-29cc1901f03b",
+                "sourceTableId": "616767af-67fa-468f-ad8f-9727133992f4",
+                "columns": [
+                  {
+                    "id": "fk_5fc7e4d0-869b-4d7b-9046-7be8d67dbaf8",
+                    "name": "game_id",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_9c32d31a-7952-43d9-91a9-978b48668af9",
+              "name": "fk_genres",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "040fadb5-c063-4c47-a9ae-c7b05868ce9b",
+                "sourceTableId": "a8e7e80a-91c0-4ef3-97d2-ef97ab2b28f9",
+                "columns": [
+                  {
+                    "id": "fk_9075b9a8-1ce0-44f7-8ae1-02b799001a44",
+                    "name": "genre_id",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            }
+          ],
+          "isSelected": false,
+          "isFactTable": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 78
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "7dff9401-3c93-4cf5-8f4b-51283ffd7cf1",
+        "type": "Table",
+        "position": {
+          "x": 1482.0000000000002,
+          "y": 399.00000000000006
+        },
+        "data": {
+          "label": "purchases",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "45b9a847-16cd-48a6-996b-d2dff1f98099",
+              "name": "purchase_id",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "772c0eb0-c0cd-4b68-95e1-2f429444d307",
+              "name": "total_price",
+              "type": "NUMERIC(p s)",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "8603edea-1358-47e9-8fde-da66c3bd0fe7",
+              "name": "purchase_time",
+              "type": "DATE",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "fk_3b8e8103-6c5f-44a0-9644-a81a1e036037",
+              "name": "fk_users",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "ee5ea245-1060-482a-94ca-1becd7bcc06f",
+                "sourceTableId": "a1b715fc-88de-45b1-aa7e-28e83bdf7265",
+                "columns": [
+                  {
+                    "id": "fk_8edaa6d2-5a4e-41aa-aaed-5e601a21f56c",
+                    "name": "user_id",
+                    "type": "INT",
+                    "size": "SERIAL"
+                  }
+                ]
+              }
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 127
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "e58a941a-18aa-4c78-8a3c-28eaedf5506d",
+        "type": "Table",
+        "position": {
+          "x": 1483.0000000000002,
+          "y": 140.0000000000007
+        },
+        "data": {
+          "label": "user_games",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fk_5bba9734-88e4-4fb7-9922-f0f9feeb5a1f",
+              "name": "fk_games",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "620b5cbc-3d1d-4247-8634-ee4085df48f5",
+                "sourceTableId": "616767af-67fa-468f-ad8f-9727133992f4",
+                "columns": [
+                  {
+                    "id": "fk_5fc7e4d0-869b-4d7b-9046-7be8d67dbaf8",
+                    "name": "game_id",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false,
+              "position": 0
+            },
+            {
+              "id": "fk_f9194807-d219-40e3-9191-e43770268faa",
+              "name": "fk_users",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "89a9ac56-1983-49c7-8e98-096d1fddd441",
+                "sourceTableId": "a1b715fc-88de-45b1-aa7e-28e83bdf7265",
+                "columns": [
+                  {
+                    "id": "fk_8edaa6d2-5a4e-41aa-aaed-5e601a21f56c",
+                    "name": "user_id",
+                    "type": "INT",
+                    "size": "SERIAL"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false,
+              "position": 1
+            },
+            {
+              "id": "fk_22304027-eda1-4bf5-919c-575c4e628f10",
+              "name": "fk_purchases",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "8af37ba9-837b-459c-9357-d055539af038",
+                "sourceTableId": "7dff9401-3c93-4cf5-8f4b-51283ffd7cf1",
+                "columns": [
+                  {
+                    "id": "fk_45b9a847-16cd-48a6-996b-d2dff1f98099",
+                    "name": "purchase_id",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": false,
+              "isOptional": true,
+              "position": 2
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 103
+        },
+        "selected": false,
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "aab548b5-4b2d-4650-9d3d-783336ec374f->616767af-67fa-468f-ad8f-9727133992f4_1167e974-61da-47d9-806a-fe05b3f4b6f4",
+        "type": "Relational",
+        "source": "aab548b5-4b2d-4650-9d3d-783336ec374f",
+        "targetHandle": "foreign-key-handle-1167e974-61da-47d9-806a-fe05b3f4b6f4",
+        "target": "616767af-67fa-468f-ad8f-9727133992f4",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "1167e974-61da-47d9-806a-fe05b3f4b6f4",
+            "sourceTableId": "aab548b5-4b2d-4650-9d3d-783336ec374f",
+            "columns": [
+              {
+                "id": "fk_d7cf00b1-48fa-4c42-89d5-8a712caa13d1",
+                "name": "publisher_id",
+                "type": "INT",
+                "size": "SERIAL"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "616767af-67fa-468f-ad8f-9727133992f4->ac5428ec-ee29-4a39-a704-4ece5be57da9_3dd1f942-9639-4db9-a430-29cc1901f03b",
+        "type": "Relational",
+        "source": "616767af-67fa-468f-ad8f-9727133992f4",
+        "targetHandle": "foreign-key-handle-3dd1f942-9639-4db9-a430-29cc1901f03b",
+        "target": "ac5428ec-ee29-4a39-a704-4ece5be57da9",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "3dd1f942-9639-4db9-a430-29cc1901f03b",
+            "sourceTableId": "616767af-67fa-468f-ad8f-9727133992f4",
+            "columns": [
+              {
+                "id": "fk_5fc7e4d0-869b-4d7b-9046-7be8d67dbaf8",
+                "name": "game_id",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "a8e7e80a-91c0-4ef3-97d2-ef97ab2b28f9->ac5428ec-ee29-4a39-a704-4ece5be57da9_040fadb5-c063-4c47-a9ae-c7b05868ce9b",
+        "type": "Relational",
+        "source": "a8e7e80a-91c0-4ef3-97d2-ef97ab2b28f9",
+        "targetHandle": "foreign-key-handle-040fadb5-c063-4c47-a9ae-c7b05868ce9b",
+        "target": "ac5428ec-ee29-4a39-a704-4ece5be57da9",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "040fadb5-c063-4c47-a9ae-c7b05868ce9b",
+            "sourceTableId": "a8e7e80a-91c0-4ef3-97d2-ef97ab2b28f9",
+            "columns": [
+              {
+                "id": "fk_9075b9a8-1ce0-44f7-8ae1-02b799001a44",
+                "name": "genre_id",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "a1b715fc-88de-45b1-aa7e-28e83bdf7265->7dff9401-3c93-4cf5-8f4b-51283ffd7cf1_ee5ea245-1060-482a-94ca-1becd7bcc06f",
+        "type": "Relational",
+        "source": "a1b715fc-88de-45b1-aa7e-28e83bdf7265",
+        "targetHandle": "foreign-key-handle-ee5ea245-1060-482a-94ca-1becd7bcc06f",
+        "target": "7dff9401-3c93-4cf5-8f4b-51283ffd7cf1",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "ee5ea245-1060-482a-94ca-1becd7bcc06f",
+            "sourceTableId": "a1b715fc-88de-45b1-aa7e-28e83bdf7265",
+            "columns": [
+              {
+                "id": "fk_8edaa6d2-5a4e-41aa-aaed-5e601a21f56c",
+                "name": "user_id",
+                "type": "INT",
+                "size": "SERIAL"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "a1b715fc-88de-45b1-aa7e-28e83bdf7265->e58a941a-18aa-4c78-8a3c-28eaedf5506d_89a9ac56-1983-49c7-8e98-096d1fddd441",
+        "type": "Relational",
+        "source": "a1b715fc-88de-45b1-aa7e-28e83bdf7265",
+        "targetHandle": "foreign-key-handle-89a9ac56-1983-49c7-8e98-096d1fddd441",
+        "target": "e58a941a-18aa-4c78-8a3c-28eaedf5506d",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "89a9ac56-1983-49c7-8e98-096d1fddd441",
+            "sourceTableId": "a1b715fc-88de-45b1-aa7e-28e83bdf7265",
+            "columns": [
+              {
+                "id": "fk_8edaa6d2-5a4e-41aa-aaed-5e601a21f56c",
+                "name": "user_id",
+                "type": "INT",
+                "size": "SERIAL"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "616767af-67fa-468f-ad8f-9727133992f4->e58a941a-18aa-4c78-8a3c-28eaedf5506d_620b5cbc-3d1d-4247-8634-ee4085df48f5",
+        "type": "Relational",
+        "source": "616767af-67fa-468f-ad8f-9727133992f4",
+        "targetHandle": "foreign-key-handle-620b5cbc-3d1d-4247-8634-ee4085df48f5",
+        "target": "e58a941a-18aa-4c78-8a3c-28eaedf5506d",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "620b5cbc-3d1d-4247-8634-ee4085df48f5",
+            "sourceTableId": "616767af-67fa-468f-ad8f-9727133992f4",
+            "columns": [
+              {
+                "id": "fk_5fc7e4d0-869b-4d7b-9046-7be8d67dbaf8",
+                "name": "game_id",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "7dff9401-3c93-4cf5-8f4b-51283ffd7cf1->e58a941a-18aa-4c78-8a3c-28eaedf5506d_8af37ba9-837b-459c-9357-d055539af038",
+        "type": "Relational",
+        "source": "7dff9401-3c93-4cf5-8f4b-51283ffd7cf1",
+        "targetHandle": "foreign-key-handle-8af37ba9-837b-459c-9357-d055539af038",
+        "target": "e58a941a-18aa-4c78-8a3c-28eaedf5506d",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "8af37ba9-837b-459c-9357-d055539af038",
+            "sourceTableId": "7dff9401-3c93-4cf5-8f4b-51283ffd7cf1",
+            "columns": [
+              {
+                "id": "fk_45b9a847-16cd-48a6-996b-d2dff1f98099",
+                "name": "purchase_id",
+                "type": "INT"
+              }
+            ]
+          }
+        },
+        "selected": false
+      }
+    ],
+    "viewport": {
+      "x": -1063.113022113025,
+      "y": -122.50604800604833,
+      "zoom": 1.5516915516915533
+    }
+  },
+  "name": "Digital game distribution platform design",
+  "folder": {
+    "name": "NoSQL-projekti",
+    "folderType": 2,
+    "parentFolder": {
+      "depth": 0,
+      "id": 190273,
+      "name": "Diagrams",
+      "folderType": 1
+    },
+    "depth": 1,
+    "id": 190275
+  },
+  "id": 219928,
+  "updatedAtTimestamp": 1768504148
+}
