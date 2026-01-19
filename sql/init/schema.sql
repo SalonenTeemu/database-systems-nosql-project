@@ -1,3 +1,6 @@
+-- Enable pg_trgm extension for advanced text search capabilities
+CREATE EXTENSION IF NOT EXISTS "pg_trgm";
+
 -- Countries table
 CREATE TABLE countries (
     country_code CHAR(3) PRIMARY KEY, -- ISO code, e.g. FIN, FRA, GER, USA etc.
@@ -40,12 +43,11 @@ CREATE TABLE genres (
     name TEXT UNIQUE NOT NULL
 );
 
--- Junction table to store game prices and availability
+-- Junction table to store game prices
 CREATE TABLE game_prices (
     game_id INT REFERENCES games(game_id),
     country_code CHAR(3) REFERENCES countries(country_code),
     price NUMERIC(8,2) NOT NULL CHECK (price >= 0), -- Price for this country
-    is_available BOOLEAN NOT NULL DEFAULT TRUE, -- Availability in the country
     PRIMARY KEY (game_id, country_code)
 );
 
