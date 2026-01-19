@@ -6,8 +6,8 @@
         "id": "a1b715fc-88de-45b1-aa7e-28e83bdf7265",
         "type": "Table",
         "position": {
-          "x": 1166.9999999999995,
-          "y": 395.99999999999966
+          "x": 1484.1583008743307,
+          "y": 128.0957556598952
         },
         "data": {
           "label": "users",
@@ -27,7 +27,7 @@
               "id": "88e819e0-46bf-439d-98ea-7b99e6f055b3",
               "name": "email",
               "type": "VARCHAR(n)",
-              "position": 0,
+              "position": 1,
               "size": "TEXT",
               "isPrimaryKey": false,
               "isUnique": true
@@ -36,7 +36,7 @@
               "id": "fa866d98-6e73-43c8-9ee4-baf99f92cb3e",
               "name": "username",
               "type": "VARCHAR(n)",
-              "position": 0,
+              "position": 2,
               "size": "TEXT",
               "isPrimaryKey": false,
               "isUnique": true
@@ -45,7 +45,7 @@
               "id": "f13941e1-85b8-41da-8d80-6878c7560ad4",
               "name": "password_hash",
               "type": "VARCHAR(n)",
-              "position": 0,
+              "position": 3,
               "size": "TEXT",
               "isPrimaryKey": false,
               "isUnique": false
@@ -54,10 +54,27 @@
               "id": "99bf614c-e53d-4cd7-a864-5f6c4f41acfa",
               "name": "created_at",
               "type": "DATE",
-              "position": 0,
+              "position": 5,
               "isPrimaryKey": false,
               "isUnique": false,
               "size": "TIMESTAMPTZ"
+            },
+            {
+              "id": "fk_d722f90d-c6f9-4758-b064-447834fc7f86",
+              "name": "fk_countries",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "402524de-c0a2-449b-99d0-2b8dc09cb550",
+                "sourceTableId": "ee0b097b-e501-4788-9000-8f890eeeef78",
+                "columns": [
+                  {
+                    "id": "fk_2b25c889-6b58-45a3-9096-071281870585",
+                    "name": "country_code",
+                    "type": "CHAR(n)"
+                  }
+                ]
+              }
             }
           ],
           "isSelected": false,
@@ -65,7 +82,7 @@
         },
         "measured": {
           "width": 240,
-          "height": 151
+          "height": 177
         },
         "selected": false,
         "dragging": false
@@ -74,8 +91,8 @@
         "id": "aab548b5-4b2d-4650-9d3d-783336ec374f",
         "type": "Table",
         "position": {
-          "x": 864.0000000000009,
-          "y": 354.99999999999983
+          "x": 1181.427483468592,
+          "y": 291.52898430989995
         },
         "data": {
           "label": "publishers",
@@ -107,13 +124,30 @@
               "position": 0,
               "isPrimaryKey": false,
               "isUnique": false
+            },
+            {
+              "id": "fk_bed9c785-2aea-4bc1-8456-38584f6193e3",
+              "name": "fk_countries",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "ddb1c1cc-8551-4568-8e67-08cc0d53d2f0",
+                "sourceTableId": "ee0b097b-e501-4788-9000-8f890eeeef78",
+                "columns": [
+                  {
+                    "id": "fk_2b25c889-6b58-45a3-9096-071281870585",
+                    "name": "country_code",
+                    "type": "CHAR(n)"
+                  }
+                ]
+              }
             }
           ],
           "isSelected": false
         },
         "measured": {
           "width": 240,
-          "height": 101
+          "height": 127
         },
         "selected": false,
         "dragging": false
@@ -122,8 +156,8 @@
         "id": "616767af-67fa-468f-ad8f-9727133992f4",
         "type": "Table",
         "position": {
-          "x": 1168.0000000000002,
-          "y": 140.00000000000006
+          "x": 878.938024879094,
+          "y": 218.97695459758557
         },
         "data": {
           "label": "games",
@@ -157,16 +191,6 @@
               "isPrimaryKey": false,
               "isUnique": false,
               "isOptional": true
-            },
-            {
-              "id": "c1ba97a8-71ad-4d9d-8476-44a02445b29c",
-              "name": "price",
-              "type": "NUMERIC(p s)",
-              "position": 0,
-              "size": "8,2",
-              "isPrimaryKey": false,
-              "isUnique": false,
-              "isOptional": false
             },
             {
               "id": "3b1821fc-6fea-4ae9-9a78-040309372686",
@@ -221,7 +245,7 @@
         },
         "measured": {
           "width": 240,
-          "height": 227
+          "height": 202
         },
         "selected": false,
         "dragging": false
@@ -230,8 +254,8 @@
         "id": "a8e7e80a-91c0-4ef3-97d2-ef97ab2b28f9",
         "type": "Table",
         "position": {
-          "x": 866.0000000000002,
-          "y": 245.00000000000057
+          "x": 876.825268744944,
+          "y": 119.94057766032077
         },
         "data": {
           "label": "genres",
@@ -268,8 +292,8 @@
         "id": "ac5428ec-ee29-4a39-a704-4ece5be57da9",
         "type": "Table",
         "position": {
-          "x": 865.0000000000007,
-          "y": 140.0000000000007
+          "x": 877.6765703899473,
+          "y": 13.791879305323889
         },
         "data": {
           "label": "game_genres",
@@ -328,8 +352,8 @@
         "id": "7dff9401-3c93-4cf5-8f4b-51283ffd7cf1",
         "type": "Table",
         "position": {
-          "x": 1482.0000000000002,
-          "y": 399.00000000000006
+          "x": 1785.0802577309616,
+          "y": 53.02578405955917
         },
         "data": {
           "label": "purchases",
@@ -374,23 +398,40 @@
                   }
                 ]
               }
+            },
+            {
+              "id": "fk_d416652a-5a4f-48e6-83c8-8088ba4b7361",
+              "name": "fk_countries",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "97040edd-9029-45bd-99a1-f31ecd0a84f2",
+                "sourceTableId": "ee0b097b-e501-4788-9000-8f890eeeef78",
+                "columns": [
+                  {
+                    "id": "fk_2b25c889-6b58-45a3-9096-071281870585",
+                    "name": "country_code",
+                    "type": "CHAR(n)"
+                  }
+                ]
+              }
             }
           ],
           "isSelected": false
         },
         "measured": {
           "width": 240,
-          "height": 127
+          "height": 152
         },
-        "selected": false,
+        "selected": true,
         "dragging": false
       },
       {
         "id": "e58a941a-18aa-4c78-8a3c-28eaedf5506d",
         "type": "Table",
         "position": {
-          "x": 1483.0000000000002,
-          "y": 140.0000000000007
+          "x": 1180.0026573327816,
+          "y": 15.442568368779305
         },
         "data": {
           "label": "user_games",
@@ -453,8 +494,8 @@
                   }
                 ]
               },
-              "isPrimaryKey": false,
-              "isOptional": true,
+              "isPrimaryKey": true,
+              "isOptional": false,
               "position": 2
             }
           ],
@@ -463,6 +504,122 @@
         "measured": {
           "width": 240,
           "height": 103
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "ee0b097b-e501-4788-9000-8f890eeeef78",
+        "type": "Table",
+        "position": {
+          "x": 1482.9832442221946,
+          "y": 319.26940104869954
+        },
+        "data": {
+          "label": "countries",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "2b25c889-6b58-45a3-9096-071281870585",
+              "name": "country_code",
+              "type": "CHAR(n)",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "2bff05d2-1420-40b6-8abc-7241e64c53a3",
+              "name": "name",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "03b4d0e8-58eb-43b7-bb62-8b482600fdb8",
+              "name": "currency_code",
+              "type": "CHAR(n)",
+              "position": 0,
+              "isPrimaryKey": false
+            }
+          ],
+          "isSelected": true
+        },
+        "measured": {
+          "width": 240,
+          "height": 101
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "bd0edf02-222a-43df-903b-9c83a144feb1",
+        "type": "Table",
+        "position": {
+          "x": 1180.8411191962646,
+          "y": 138.96361970875967
+        },
+        "data": {
+          "label": "game_prices",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fe52f67f-8e7f-4456-b9c5-a95ffc2cfa2a",
+              "name": "price",
+              "type": "NUMERIC(p s)",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "2d22cadf-9403-49ad-bfad-b6d2de23fb77",
+              "name": "is_available",
+              "type": "Custom",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "fk_b59d0b5e-2eb6-4f21-a8be-fbc0145345b8",
+              "name": "fk_games",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "f516479a-da06-4862-a6f2-485b4afbe519",
+                "sourceTableId": "616767af-67fa-468f-ad8f-9727133992f4",
+                "columns": [
+                  {
+                    "id": "fk_5fc7e4d0-869b-4d7b-9046-7be8d67dbaf8",
+                    "name": "game_id",
+                    "type": "INT"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_61536cb0-5940-4c76-b8c0-7cec59fddc64",
+              "name": "fk_countries",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "e3a7c562-fd29-4c82-8213-02694a2ae696",
+                "sourceTableId": "ee0b097b-e501-4788-9000-8f890eeeef78",
+                "columns": [
+                  {
+                    "id": "fk_2b25c889-6b58-45a3-9096-071281870585",
+                    "name": "country_code",
+                    "type": "CHAR(n)"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            }
+          ],
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 127
         },
         "selected": false,
         "dragging": false
@@ -633,12 +790,127 @@
           }
         },
         "selected": false
+      },
+      {
+        "id": "ee0b097b-e501-4788-9000-8f890eeeef78->a1b715fc-88de-45b1-aa7e-28e83bdf7265_402524de-c0a2-449b-99d0-2b8dc09cb550",
+        "type": "Relational",
+        "source": "ee0b097b-e501-4788-9000-8f890eeeef78",
+        "targetHandle": "foreign-key-handle-402524de-c0a2-449b-99d0-2b8dc09cb550",
+        "target": "a1b715fc-88de-45b1-aa7e-28e83bdf7265",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "402524de-c0a2-449b-99d0-2b8dc09cb550",
+            "sourceTableId": "ee0b097b-e501-4788-9000-8f890eeeef78",
+            "columns": [
+              {
+                "id": "fk_2b25c889-6b58-45a3-9096-071281870585",
+                "name": "country_code",
+                "type": "CHAR(n)"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "ee0b097b-e501-4788-9000-8f890eeeef78->aab548b5-4b2d-4650-9d3d-783336ec374f_ddb1c1cc-8551-4568-8e67-08cc0d53d2f0",
+        "type": "Relational",
+        "source": "ee0b097b-e501-4788-9000-8f890eeeef78",
+        "targetHandle": "foreign-key-handle-ddb1c1cc-8551-4568-8e67-08cc0d53d2f0",
+        "target": "aab548b5-4b2d-4650-9d3d-783336ec374f",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "ddb1c1cc-8551-4568-8e67-08cc0d53d2f0",
+            "sourceTableId": "ee0b097b-e501-4788-9000-8f890eeeef78",
+            "columns": [
+              {
+                "id": "fk_2b25c889-6b58-45a3-9096-071281870585",
+                "name": "country_code",
+                "type": "CHAR(n)"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "616767af-67fa-468f-ad8f-9727133992f4->bd0edf02-222a-43df-903b-9c83a144feb1_f516479a-da06-4862-a6f2-485b4afbe519",
+        "type": "Relational",
+        "source": "616767af-67fa-468f-ad8f-9727133992f4",
+        "targetHandle": "foreign-key-handle-f516479a-da06-4862-a6f2-485b4afbe519",
+        "target": "bd0edf02-222a-43df-903b-9c83a144feb1",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "f516479a-da06-4862-a6f2-485b4afbe519",
+            "sourceTableId": "616767af-67fa-468f-ad8f-9727133992f4",
+            "columns": [
+              {
+                "id": "fk_5fc7e4d0-869b-4d7b-9046-7be8d67dbaf8",
+                "name": "game_id",
+                "type": "INT"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "ee0b097b-e501-4788-9000-8f890eeeef78->bd0edf02-222a-43df-903b-9c83a144feb1_e3a7c562-fd29-4c82-8213-02694a2ae696",
+        "type": "Relational",
+        "source": "ee0b097b-e501-4788-9000-8f890eeeef78",
+        "targetHandle": "foreign-key-handle-e3a7c562-fd29-4c82-8213-02694a2ae696",
+        "target": "bd0edf02-222a-43df-903b-9c83a144feb1",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "e3a7c562-fd29-4c82-8213-02694a2ae696",
+            "sourceTableId": "ee0b097b-e501-4788-9000-8f890eeeef78",
+            "columns": [
+              {
+                "id": "fk_2b25c889-6b58-45a3-9096-071281870585",
+                "name": "country_code",
+                "type": "CHAR(n)"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "ee0b097b-e501-4788-9000-8f890eeeef78->7dff9401-3c93-4cf5-8f4b-51283ffd7cf1_97040edd-9029-45bd-99a1-f31ecd0a84f2",
+        "type": "Relational",
+        "source": "ee0b097b-e501-4788-9000-8f890eeeef78",
+        "targetHandle": "foreign-key-handle-97040edd-9029-45bd-99a1-f31ecd0a84f2",
+        "target": "7dff9401-3c93-4cf5-8f4b-51283ffd7cf1",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "97040edd-9029-45bd-99a1-f31ecd0a84f2",
+            "sourceTableId": "ee0b097b-e501-4788-9000-8f890eeeef78",
+            "columns": [
+              {
+                "id": "fk_2b25c889-6b58-45a3-9096-071281870585",
+                "name": "country_code",
+                "type": "CHAR(n)"
+              }
+            ]
+          }
+        }
       }
     ],
     "viewport": {
-      "x": -1063.113022113025,
-      "y": -122.50604800604833,
-      "zoom": 1.5516915516915533
+      "x": -325.9540822915528,
+      "y": 194.76514681863716,
+      "zoom": 0.7578582832551997
     }
   },
   "name": "Digital game distribution platform design",
@@ -655,5 +927,5 @@
     "id": 190275
   },
   "id": 219928,
-  "updatedAtTimestamp": 1768504148
+  "updatedAtTimestamp": 1768841001
 }
