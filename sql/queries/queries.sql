@@ -14,16 +14,25 @@ SELECT
     g.title,
     gp.price,
     c.currency_code,
-    p.name AS publisher
+    p.name AS publisher,
+    ARRAY_AGG(gen.name ORDER BY gen.name) AS genres
 FROM games g
 JOIN game_prices gp ON g.game_id = gp.game_id
 JOIN countries c ON gp.country_code = c.country_code
 JOIN publishers p ON g.publisher_id = p.publisher_id
+JOIN game_genres gg ON g.game_id = gg.game_id
+JOIN genres gen ON gg.genre_id = gen.genre_id
 WHERE gp.country_code = (
     SELECT country_code
     FROM users
     WHERE user_id = 1 -- Id of requesting user
 )
+GROUP BY
+    g.game_id,
+    g.title,
+    gp.price,
+    c.currency_code,
+    p.name
 ORDER BY g.release_date DESC;
 
 -- 2) Non-logged in user (use country code as parameter)
@@ -32,24 +41,28 @@ SELECT
     g.title,
     gp.price,
     c.currency_code,
-    p.name AS publisher
+    p.name AS publisher,
+    ARRAY_AGG(gen.name ORDER BY gen.name) AS genres
 FROM games g
 JOIN game_prices gp ON g.game_id = gp.game_id
 JOIN countries c ON gp.country_code = c.country_code
 JOIN publishers p ON g.publisher_id = p.publisher_id
-WHERE gp.country_code = $1 -- Country code parameter
-AND g.game_id IN (
-    SELECT gg.game_id
-    FROM game_genres gg
-    JOIN genres gen ON gg.genre_id = gen.genre_id
-    WHERE gen.name = 'Action'
-)
-AND gp.price = 0
-AND g.release_date >= '2026-01-01'
+JOIN game_genres gg ON g.game_id = gg.game_id
+JOIN genres gen ON gg.genre_id = gen.genre_id
+WHERE gp.country_code = :'country_code' -- Country code parameter
+  AND gen.name IN ('Action', 'Adventure', 'RPG') -- Could also be parameterized
+  AND gp.price <= 60.00 -- Could also be parameterized
+  AND g.release_date >= '2024-01-01' -- Could also be parameterized
+GROUP BY
+    g.game_id,
+    g.title,
+    gp.price,
+    c.currency_code,
+    p.name
 ORDER BY g.release_date DESC;
 
 -- UC4: Search games, similar for title, publisher or description
-SELECT similarity(g.title, $1) AS title_score,
+SELECT similarity(g.title, :'search_term') AS title_score,
        g.game_id,
        g.title,
        gp.price,
@@ -59,13 +72,14 @@ FROM games g
 JOIN game_prices gp ON g.game_id = gp.game_id
 JOIN countries c ON gp.country_code = c.country_code
 JOIN publishers p ON g.publisher_id = p.publisher_id
-WHERE g.title % $1 -- Search term parameter
+WHERE g.title % :'search_term' -- Search term parameter (default 0.3 threshold)
+-- p.name % :'search_term' -- For publisher search
+-- g.description % :'search_term' -- For description search
 AND gp.country_code = (
     SELECT country_code
     FROM users
     WHERE user_id = 1 -- Id of requesting user
 )
-AND p.name 
 ORDER BY title_score DESC
 LIMIT 25;
 
@@ -81,7 +95,7 @@ FROM games g
 JOIN publishers p ON g.publisher_id = p.publisher_id
 JOIN game_prices gp ON g.game_id = gp.game_id
 JOIN countries c ON gp.country_code = c.country_code
-WHERE g.game_id = 5 
+WHERE g.game_id = 1
 AND gp.country_code = (
     SELECT country_code
     FROM users
@@ -90,40 +104,53 @@ AND gp.country_code = (
 
 -- UC6: Publisher adds a new game
 BEGIN;
-    WITH new_game AS (
-        INSERT INTO games (publisher_id, title, description, release_date)
-        VALUES (1, 'Santas Workshop', 'A festive holiday-themed game.', '2025-09-15')
-        RETURNING game_id
-    )
-    -- Insert prices for the new game (example for USA only)
-    INSERT INTO game_prices (game_id, country_code, price)
-    SELECT game_id, 'USA', 59.99
-    FROM new_game;
 
-    -- Insert genre for the new game
+WITH new_game AS (
+    INSERT INTO games (publisher_id, title, description, release_date)
+    VALUES (1, 'Santas Workshop', 'A festive holiday-themed game', '2025-09-15')
+    RETURNING game_id
+),
+-- Insert prices for the new game (example for USA and Finland)
+insert_prices AS (
+    INSERT INTO game_prices (game_id, country_code, price)
+    VALUES
+    ((SELECT game_id FROM new_game), 'USA', 59.99),
+    ((SELECT game_id FROM new_game), 'FIN', 49.99)
+),
+-- Insert genre for the new game
+insert_genres AS (
     INSERT INTO game_genres (game_id, genre_id)
     SELECT game_id, 11 -- Holiday genre_id
-    FROM new_game;
+    FROM new_game
+)
+SELECT * FROM new_game;
+
 COMMIT;
 
 -- UC7: Publisher updates game
+BEGIN;
+
+-- Update the game description
 UPDATE games
 SET description = 'Fantasy RPG set in the north. NOW WITH MORE MAGIC!'
-WHERE game_id = 1 -- Frozen Realms game
+WHERE game_id = 1; -- Frozen Realms game_id
 
+-- Update the price for Finland
 UPDATE game_prices
 SET price = 29.99
 WHERE game_id = 1 AND country_code = 'FIN';
+
+COMMIT;
 
 -- UC8: Purchase a game
 BEGIN;
     WITH new_purchase AS (
         INSERT INTO purchases (user_id, country_code, total_price)
-        VALUES (1, 'FIN', 59.99);
+        VALUES (1, 'FIN', 49.99)
         RETURNING purchase_id
     )
     INSERT INTO user_games (game_id, user_id, purchase_id)
-    VALUES (1, 1, (SELECT purchase_id FROM new_purchase));
+    VALUES (16, 1, (SELECT purchase_id FROM new_purchase)); -- Santas Workshop game_id
 COMMIT;
 
 -- UC9: View owned games

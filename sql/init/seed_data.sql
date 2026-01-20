@@ -39,21 +39,21 @@ INSERT INTO publishers (name, country_code) VALUES
 
 -- Insert games
 INSERT INTO games (publisher_id, title, description, release_date) VALUES
-(1, 'Frozen Realms', 'Fantasy RPG set in the north', '2024-01-10'),
+(1, 'Frozen Realms', 'Fantasy RPG set in the north', '2025-01-10'),
 (2, 'Urban Racer', 'Fast-paced racing game', '2023-11-05'),
-(3, 'Samurai Code', 'Stealth action in feudal Japan', '2024-02-20'),
+(3, 'Samurai Code', 'Stealth action in feudal Japan', '2015-02-20'),
 (4, 'Ocean Depths', 'Underwater exploration game', '2023-08-15'),
 (5, 'Iron Siege', 'Medieval strategy warfare', '2022-12-01'),
-(6, 'Solar Drift', 'Sci-fi space racing', '2024-04-01'),
+(6, 'Solar Drift', 'Sci-fi space racing', '2018-04-01'),
 (7, 'Maple Storyline', 'Adventure RPG', '2023-09-10'),
 (8, 'Desert Storm', 'Modern FPS shooter', '2023-06-22'),
 (9, 'Viking Saga', 'Norse mythology RPG', '2024-03-05'),
-(10,'London Heist', 'Crime action game', '2022-10-30'),
+(10,'London Heist', 'Crime action game', '2020-10-30'),
 (2, 'Neon Skies', 'Cyberpunk flying shooter', '2024-05-10'),
 (3, 'Ronin Path', 'Souls-like samurai RPG', '2023-11-18'),
 (4, 'Deep Blue', 'Ocean survival exploration', '2024-01-22'),
 (6, 'Star Nomads', 'Open-world space RPG', '2024-03-12'),
-(9, 'Nordic Legends', 'Mythological adventure', '2023-09-01');
+(9, 'Nordic Legends', 'Mythological adventure', '2026-01-01');
 
 -- Insert genres
 INSERT INTO genres (name) VALUES
