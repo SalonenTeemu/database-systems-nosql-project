@@ -35,9 +35,21 @@ The `documentation/` folder contains:
 - The project report including the business domain and use cases
 - Database design and architecture documents
 
-## SQL code 
+## PostgreSQL setup 
 
-The `sql/` folder contains:
+The `postgres/` folder contains:
 - Table creation statements
 - Data insertion scripts
-- Queries for the project use cases
+- Queries for the first 10 project use cases
+
+## MongoDB setup 
+
+The `mongo/` folder contains:
+- Collection creation statements
+- Data insertion scripts
+- Queries for the extra 3 project use cases
+
+The MongoDB database can be viewed using the mongo-express image on `http://localhost:8081`.
+The credentials to access the web UI are:
+- Username: admin
+- Password admin
