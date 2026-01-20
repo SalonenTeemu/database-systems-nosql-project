@@ -1,6 +1,8 @@
 -- Enable pg_trgm extension for advanced text search capabilities
 CREATE EXTENSION IF NOT EXISTS "pg_trgm";
 
+-- Tables --
+
 -- Countries table to store country and currency information
 CREATE TABLE countries (
     country_code CHAR(3) PRIMARY KEY, -- ISO code, e.g. FIN, FRA, GER, USA etc.
@@ -33,7 +35,6 @@ CREATE TABLE games (
     title TEXT UNIQUE NOT NULL,
     description TEXT,
     release_date DATE,
-    is_active BOOLEAN NOT NULL DEFAULT TRUE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -74,3 +75,30 @@ CREATE TABLE user_games (
     purchase_id INT REFERENCES purchases(purchase_id),
     PRIMARY KEY (user_id, game_id, purchase_id)
 );
+
+-- Indexes --
+
+-- Countries table and users table don't require manually created indexes as primary and unique keys have indexes by default, and they are sufficient
+
+-- Publishers table
+CREATE INDEX idx_publishers_name_trgm ON publishers USING gin (name gin_trgm_ops);
+
+-- Games table
+CREATE INDEX idx_games_title_trgm ON games USING gin (title gin_trgm_ops);
+CREATE INDEX idx_games_description_trgm ON games USING gin (description gin_trgm_ops);
+CREATE INDEX idx_games_publisher_id ON games(publisher_id);
+CREATE INDEX idx_games_release_date ON games(release_date);
+
+-- Game genres junction table
+CREATE INDEX idx_game_genres_genre_id ON game_genres(genre_id);
+CREATE INDEX idx_game_genres_genre_id_game_id ON game_genres(genre_id, game_id);
+
+-- Game prices table
+CREATE INDEX idx_game_prices_country ON game_prices(country_code);
+CREATE INDEX idx_game_prices_country_price ON game_prices(country_code, price);
+
+-- Purchases table
+CREATE INDEX idx_purchases_user_time ON purchases(user_id, purchase_time DESC);
+
+-- User games junction table
+CREATE INDEX idx_user_games_purchase_id ON user_games(purchase_id);
