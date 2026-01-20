@@ -39,17 +39,18 @@ The `documentation/` folder contains:
 
 The `postgres/` folder contains:
 - Table creation statements
-- Data insertion scripts
+- Data insertion statements
 - Queries for the first 10 project use cases
 
 ## MongoDB setup 
 
 The `mongo/` folder contains:
-- Collection creation statements
+- Collection creation scripts
 - Data insertion scripts
-- Queries for the extra 3 project use cases
+- Queries for the additional 3 project use cases
 
-The MongoDB database can be viewed using the mongo-express image on `http://localhost:8081`.
-The credentials to access the web UI are:
-- Username: admin
-- Password admin
+You can view the MongoDB database using the mongo-express web interface at: `http://localhost:8081`.
+
+The access credentials: are:
+- Username: `admin`
+- Password: `admin`
