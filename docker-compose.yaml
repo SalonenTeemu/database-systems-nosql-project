@@ -11,5 +11,6 @@ services:
     volumes:
       - ./sql/init:/docker-entrypoint-initdb.d
       - game_store_data:/var/lib/postgresql/data
+    
 volumes:
   game_store_data:

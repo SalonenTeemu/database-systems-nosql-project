@@ -1,14 +1,14 @@
 -- UC1: User registration
 INSERT INTO users (email, username, password_hash, country_code)
-VALUES ('john@example.com', 'john_doe', 'hashed_password_123', 'USA');
+VALUES ('john@email.com', 'john', 'hash11', 'USA');
 
 -- UC2: User login / account lookup 
 SELECT user_id, email, username, password_hash, country_code
 FROM users
-WHERE email = 'alice@example.com';
+WHERE email = 'john@email.com';
 
 -- UC3: Browse available games
--- Logged in user
+-- 1) Logged in user
 SELECT 
     g.game_id,
     g.title,
@@ -26,7 +26,7 @@ WHERE gp.country_code = (
 )
 ORDER BY g.release_date DESC;
 
--- Non-logged in user (use country code as parameter)
+-- 2) Non-logged in user (use country code as parameter)
 SELECT 
     g.game_id,
     g.title,
@@ -92,22 +92,28 @@ AND gp.country_code = (
 BEGIN;
     WITH new_game AS (
         INSERT INTO games (publisher_id, title, description, release_date)
-        VALUES (1, 'New Exciting Game', 'An exciting new game description.', '2024-09-15')
+        VALUES (1, 'Santas Workshop', 'A festive holiday-themed game.', '2025-09-15')
         RETURNING game_id
     )
+    -- Insert prices for the new game (example for USA only)
     INSERT INTO game_prices (game_id, country_code, price)
     SELECT game_id, 'USA', 59.99
+    FROM new_game;
+
+    -- Insert genre for the new game
+    INSERT INTO game_genres (game_id, genre_id)
+    SELECT game_id, 11 -- Holiday genre_id
     FROM new_game;
 COMMIT;
 
 -- UC7: Publisher updates game
 UPDATE games
-SET description = 'Updated game description.'
-WHERE game_id = 10
+SET description = 'Fantasy RPG set in the north. NOW WITH MORE MAGIC!'
+WHERE game_id = 1 -- Frozen Realms game
 
 UPDATE game_prices
 SET price = 29.99
-WHERE game_id = 10 AND country_code = 'FIN';
+WHERE game_id = 1 AND country_code = 'FIN';
 
 -- UC8: Purchase a game
 BEGIN;

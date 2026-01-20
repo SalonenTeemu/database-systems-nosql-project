@@ -22,15 +22,17 @@ git clone https://github.com/SalonenTeemu/database-systems-nosql-project.git
 cd database-systems-nosql-project
 ```
 
-3. Start the applciation using Docker compose:
+3. Start the application using Docker compose:
 ```
 docker-compose up
 ```
 
+During the initial startup, table creation statements and seed data insertions are executed.
+
 ## Documentation
 
 The `documentation/` folder contains:
-- The project report
+- The project report including the business domain and use cases
 - Database design and architecture documents
 
 ## SQL code 

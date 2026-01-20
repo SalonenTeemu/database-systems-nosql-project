@@ -1,14 +1,14 @@
 -- Enable pg_trgm extension for advanced text search capabilities
 CREATE EXTENSION IF NOT EXISTS "pg_trgm";
 
--- Countries table
+-- Countries table to store country and currency information
 CREATE TABLE countries (
     country_code CHAR(3) PRIMARY KEY, -- ISO code, e.g. FIN, FRA, GER, USA etc.
     name TEXT NOT NULL,
     currency_code CHAR(3) NOT NULL -- EUR, SEK, etc.
 );
 
--- User table to store user information
+-- Users table to store user information
 CREATE TABLE users (
     user_id SERIAL PRIMARY KEY,
     email TEXT UNIQUE NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE users (
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
--- Publisher table to store game publisher information
+-- Publishers table to store game publisher information
 CREATE TABLE publishers (
     publisher_id SERIAL PRIMARY KEY,
     name TEXT UNIQUE NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE publishers (
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
--- Game table to store game information
+-- Games table to store game information
 CREATE TABLE games (
     game_id SERIAL PRIMARY KEY,
     publisher_id INT NOT NULL REFERENCES publishers(publisher_id),
@@ -37,13 +37,20 @@ CREATE TABLE games (
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
--- Genre table to store game genres
+-- Genres table to store game genres
 CREATE TABLE genres (
     genre_id SERIAL PRIMARY KEY,
     name TEXT UNIQUE NOT NULL
 );
 
--- Junction table to store game prices
+-- Junction table to associate games with genres
+CREATE TABLE game_genres (
+    game_id INT REFERENCES games(game_id),
+    genre_id INT REFERENCES genres(genre_id),
+    PRIMARY KEY (game_id, genre_id)
+);
+
+-- Junction table to store game prices per country (also determines availability if there is a row for the country)
 CREATE TABLE game_prices (
     game_id INT REFERENCES games(game_id),
     country_code CHAR(3) REFERENCES countries(country_code),
@@ -51,14 +58,7 @@ CREATE TABLE game_prices (
     PRIMARY KEY (game_id, country_code)
 );
 
--- Junction table to associate games with genres (many-to-many relationship)
-CREATE TABLE game_genres (
-    game_id INT REFERENCES games(game_id),
-    genre_id INT REFERENCES genres(genre_id),
-    PRIMARY KEY (game_id, genre_id)
-);
-
--- Purchase table to store data about user game purchases
+-- Purchases table to store data about user game purchases
 CREATE TABLE purchases (
     purchase_id SERIAL PRIMARY KEY,
     user_id INT NOT NULL REFERENCES users(user_id),
