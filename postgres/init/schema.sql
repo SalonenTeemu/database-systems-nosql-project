@@ -1,5 +1,9 @@
--- Enable pg_trgm extension for advanced text search capabilities
+-- Enable pg_trgm extension and fuzzystrmatch for advanced text search capabilities
 CREATE EXTENSION IF NOT EXISTS "pg_trgm";
+CREATE EXTENSION IF NOT EXISTS "fuzzystrmatch";
+
+-- Set similarity lower threshold for pg_trgm searches for increased search results
+SET pg_trgm.similarity_threshold = 0.2;
 
 -- Tables --
 

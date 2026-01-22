@@ -61,26 +61,45 @@ GROUP BY
     p.name
 ORDER BY g.release_date DESC;
 
--- UC4: Search games, similar for title, publisher or description
-SELECT similarity(g.title, :'search_term') AS title_score,
+-- UC4: Search games, similar for title, publisher or description similar to a search term
+WITH search_suggestions AS (
+    SELECT
        g.game_id,
        g.title,
+       g.description,
        gp.price,
        c.currency_code,
        p.name AS publisher
-FROM games g
-JOIN game_prices gp ON g.game_id = gp.game_id
-JOIN countries c ON gp.country_code = c.country_code
-JOIN publishers p ON g.publisher_id = p.publisher_id
-WHERE g.title % :'search_term' -- Search term parameter (default 0.3 threshold)
--- p.name % :'search_term' -- For publisher search
--- g.description % :'search_term' -- For description search
-AND gp.country_code = (
-    SELECT country_code
-    FROM users
-    WHERE user_id = 1 -- Id of requesting user
+    FROM games g
+    JOIN game_prices gp ON g.game_id = gp.game_id
+    JOIN countries c ON gp.country_code = c.country_code
+    JOIN publishers p ON g.publisher_id = p.publisher_id
+    WHERE 
+    (   g.title % :'search_term' -- Title term parameter (default 0.3 threshold)
+        OR p.name % :'search_term' -- For publisher search
+        OR g.description % :'search_term' -- For description search
+    )
+    AND gp.country_code = (
+        SELECT country_code
+        FROM users
+        WHERE user_id = 1 -- Id of requesting user
+    )
+    LIMIT 500
 )
-ORDER BY title_score DESC
+SELECT
+    game_id,
+    title,
+    price,
+    currency_code,
+    publisher,
+    (
+        similarity(title, :'search_term') * 1.00 +
+        similarity(publisher, :'search_term') * 0.60 +
+        similarity(description, :'search_term') * 0.30 +
+        (1.0 - LEAST(levenshtein(lower(title), lower(:'search_term')), 10) / 10.0) * 0.40
+    ) AS score
+FROM search_suggestions
+ORDER BY score DESC
 LIMIT 25;
 
 -- UC5: View game details 
