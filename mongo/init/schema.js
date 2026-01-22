@@ -1,3 +1,5 @@
+// -- Collections --
+
 // Create collection for game interactions (likes, reviews)
 db.createCollection("game_interactions", {
   validator: {
@@ -106,5 +108,13 @@ db.createCollection("game_trending_stats", {
   validationLevel: "strict",
   validationAction: "error",
 });
+
+// -- Indexes --
+
+// Unique index to prevent duplicate interactions by the same user on the same game
+db.game_interactions.createIndex(
+  { user_id: 1, game_id: 1, type: 1 },
+  { unique: true },
+);
 
 print("MongoDB initialization completed successfully.");
