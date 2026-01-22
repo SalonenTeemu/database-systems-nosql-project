@@ -24,7 +24,7 @@ cd database-systems-nosql-project
 
 3. Start the application using Docker compose:
 ```
-docker-compose up
+docker-compose up -d
 ```
 
 During the initial startup, table creation statements and seed data insertions are executed.
@@ -35,22 +35,26 @@ The `documentation/` folder contains:
 - The project report including the business domain and use cases
 - Database design and architecture documents
 
-## PostgreSQL setup 
+## PostgreSQL setup
 
 The `postgres/` folder contains:
 - Table creation statements
 - Data insertion statements
-- Queries for the first 10 project use cases
+- Queries for the first 10 project use 
 
-## MongoDB setup 
+To access the PostgreSQL shell via Docker, run: `docker exec -it postgres psql -U admin -d game_store`.
+
+## MongoDB setup
 
 The `mongo/` folder contains:
 - Collection creation scripts
 - Data insertion scripts
 - Queries for the additional 3 project use cases
 
-You can view the MongoDB database using the mongo-express web interface at: `http://localhost:8081`.
+To access the MongoDB shell via Docker, run: `docker exec -it mongo mongosh "mongodb://admin:admin@localhost:27017/game_store?authSource=admin"`.
 
-The access credentials: are:
+You can also view the MongoDB database using the mongo-express web interface at: `http://localhost:8081`.
+
+The access credentials are:
 - Username: `admin`
 - Password: `admin`
