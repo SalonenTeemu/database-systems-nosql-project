@@ -1,5 +1,9 @@
--- Enable pg_trgm extension for advanced text search capabilities
+-- Enable pg_trgm extension and fuzzystrmatch for advanced text search capabilities
 CREATE EXTENSION IF NOT EXISTS "pg_trgm";
+CREATE EXTENSION IF NOT EXISTS "fuzzystrmatch";
+
+-- Set similarity lower threshold for pg_trgm searches for increased search results
+SET pg_trgm.similarity_threshold = 0.2;
 
 -- Tables --
 
@@ -35,7 +39,8 @@ CREATE TABLE games (
     title TEXT UNIQUE NOT NULL,
     description TEXT,
     release_date DATE,
-    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    hardware_requirements JSONB
 );
 
 -- Genres table to store game genres

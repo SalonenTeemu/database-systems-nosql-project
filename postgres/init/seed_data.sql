@@ -38,22 +38,22 @@ INSERT INTO publishers (name, country_code) VALUES
 ('BritSoft', 'GBR');
 
 -- Insert games
-INSERT INTO games (publisher_id, title, description, release_date) VALUES
-(1, 'Frozen Realms', 'Fantasy RPG set in the north', '2025-01-10'),
-(2, 'Urban Racer', 'Fast-paced racing game', '2023-11-05'),
-(3, 'Samurai Code', 'Stealth action in feudal Japan', '2015-02-20'),
-(4, 'Ocean Depths', 'Underwater exploration game', '2023-08-15'),
-(5, 'Iron Siege', 'Medieval strategy warfare', '2022-12-01'),
-(6, 'Solar Drift', 'Sci-fi space racing', '2018-04-01'),
-(7, 'Maple Storyline', 'Adventure RPG', '2023-09-10'),
-(8, 'Desert Storm', 'Modern FPS shooter', '2023-06-22'),
-(9, 'Viking Saga', 'Norse mythology RPG', '2024-03-05'),
-(10,'London Heist', 'Crime action game', '2020-10-30'),
-(2, 'Neon Skies', 'Cyberpunk flying shooter', '2024-05-10'),
-(3, 'Ronin Path', 'Souls-like samurai RPG', '2023-11-18'),
-(4, 'Deep Blue', 'Ocean survival exploration', '2024-01-22'),
-(6, 'Star Nomads', 'Open-world space RPG', '2024-03-12'),
-(9, 'Nordic Legends', 'Mythological adventure', '2026-01-01');
+INSERT INTO games (publisher_id, title, description, release_date, hardware_requirements) VALUES
+(1, 'Frozen Realms', 'Fantasy RPG set in the north', '2025-01-10', '{"minimum": {"os": "Windows 10 64-bit", "cpu": "i5", "ram": "16GB", "gpu": "GTX 1060", "storage": "25GB"}, "recommended": {"os": "Windows 10 or later 64-bit", "cpu": "i7-9700k or equivalent", "ram": "32GB", "gpu": "RTX 2070", "storage": "32GB"}}'::JSONB),
+(2, 'Urban Racer', 'Fast-paced racing game', '2023-11-05', '{"minimum": {"os": "Windows 64-bit", "cpu": "i3", "ram": "8GB", "gpu": "GTX 750", "storage": "20GB"}, "recommended": {"os": "Windows 10 or later 64-bit", "cpu": "i5", "ram": "16GB", "gpu": "GTX 1060", "storage": "20GB"}}'::JSONB),
+(3, 'Samurai Code', 'Stealth action in feudal Japan', '2015-02-20', NULL),
+(4, 'Ocean Depths', 'Underwater exploration game', '2023-08-15', NULL),
+(5, 'Iron Siege', 'Medieval strategy warfare', '2022-12-01', '{"minimum": {"os": "Windows 64-bit, Linux", "cpu": "i5", "ram": "8GB", "gpu": "GTX 960", "storage": "30GB"}, "recommended": {"os": "Windows 10 or later 64-bit", "cpu": "i7", "ram": "16GB", "gpu": "GTX 1070", "storage": "35GB"}}'::JSONB),
+(6, 'Solar Drift', 'Sci-fi space racing', '2018-04-01', NULL),
+(7, 'Maple Storyline', 'Adventure RPG', '2023-09-10', NULL),
+(8, 'Desert Storm', 'Modern FPS shooter', '2023-06-22', '{"minimum": {"os": "Windows 64-bit", "cpu": "i5-9400f or equivalent", "ram": "16GB", "gpu": "RTX 4070", "storage": "50GB"}, "recommended": {"os": "Windows 10 or later 64-bit", "cpu": "i9-9900k or equivalent", "ram": "32GB", "gpu": "GTX 5080", "storage": "60GB"}}'::JSONB),
+(9, 'Viking Saga', 'Norse mythology RPG', '2024-03-05', NULL),
+(10,'London Heist', 'Crime action game', '2020-10-30', NULL),
+(2, 'Neon Skies', 'Cyberpunk flying shooter', '2024-05-10', '{"minimum": {"os": "Windows 7", "storage": "1GB"}, "recommended": {"os": "Windows 10 or later", "storage": "2GB"}}'::JSONB),
+(3, 'Ronin Path', 'Souls-like samurai RPG', '2023-11-18', NULL),
+(4, 'Deep Blue', 'Ocean survival exploration', '2024-01-22', '{"minimum": {"os": "Windows 10 64-bit", "cpu": "i5", "ram": "16GB", "gpu": "GTX 1060", "storage": "30GB"}, "recommended": {"os": "Windows 10 or later 64-bit", "cpu": "i7-9700k or equivalent", "ram": "32GB", "gpu": "RTX 2070", "storage": "40GB"}}'::JSONB),
+(6, 'Star Nomads', 'Open-world space RPG', '2024-03-12', NULL),
+(9, 'Nordic Legends', 'Mythological adventure', '2026-01-01', '{"minimum": {"os": "Windows 7", "ram": "2GB", "storage": "2GB"}, "recommended": {"os": "Windows 10 or later", "ram": "4GB", "gpu": "GTX 660", "storage": "2GB"}}'::JSONB);
 
 -- Insert genres
 INSERT INTO genres (name) VALUES
