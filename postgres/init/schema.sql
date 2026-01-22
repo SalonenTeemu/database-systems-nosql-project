@@ -35,7 +35,8 @@ CREATE TABLE games (
     title TEXT UNIQUE NOT NULL,
     description TEXT,
     release_date DATE,
-    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    hardware_requirements JSONB
 );
 
 -- Genres table to store game genres

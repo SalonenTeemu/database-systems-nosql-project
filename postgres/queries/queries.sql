@@ -90,7 +90,8 @@ SELECT
     g.release_date,
     p.name AS publisher,
     gp.price,
-    c.currency_code
+    c.currency_code,
+    g.hardware_requirements
 FROM games g
 JOIN publishers p ON g.publisher_id = p.publisher_id
 JOIN game_prices gp ON g.game_id = gp.game_id
@@ -106,8 +107,8 @@ AND gp.country_code = (
 BEGIN;
 
 WITH new_game AS (
-    INSERT INTO games (publisher_id, title, description, release_date)
-    VALUES (1, 'Santas Workshop', 'A festive holiday-themed game', '2025-09-15')
+    INSERT INTO games (publisher_id, title, description, release_date, hardware_requirements)
+    VALUES (1, 'Santas Workshop', 'A festive holiday-themed game', '2025-09-15', '{"minimum": {"os": "Windows 64-bit", "cpu": "i3", "ram": "8GB", "gpu": "GTX 750", "storage": "15GB"}, "recommended": {"os": "Windows 10 or later 64-bit", "cpu": "i5", "ram": "16GB", "gpu": "GTX 1060", "storage": "20GB"}}'::JSONB)
     RETURNING game_id
 ),
 -- Insert prices for the new game (example for USA and Finland)
@@ -130,9 +131,9 @@ COMMIT;
 -- UC7: Publisher updates game
 BEGIN;
 
--- Update the game description
+-- Update the game description and hardware requirements for recommended storage
 UPDATE games
-SET description = 'Fantasy RPG set in the north. NOW WITH MORE MAGIC!'
+SET description = 'Fantasy RPG set in the north. NOW WITH MORE MAGIC!', hardware_requirements = jsonb_set(hardware_requirements, '{recommended,storage}', '"35GB"')
 WHERE game_id = 1; -- Frozen Realms game_id
 
 -- Update the price for Finland
