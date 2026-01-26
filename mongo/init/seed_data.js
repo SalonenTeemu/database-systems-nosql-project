@@ -1,22 +1,3 @@
-// Insert game vector embeddings
-db.game_vectors.insertMany([
-  { game_id: 1, embedding: Array.from({ length: 50 }, () => Math.random()) },
-  { game_id: 2, embedding: Array.from({ length: 50 }, () => Math.random()) },
-  { game_id: 3, embedding: Array.from({ length: 50 }, () => Math.random()) },
-  { game_id: 4, embedding: Array.from({ length: 50 }, () => Math.random()) },
-  { game_id: 5, embedding: Array.from({ length: 50 }, () => Math.random()) },
-  { game_id: 6, embedding: Array.from({ length: 50 }, () => Math.random()) },
-  { game_id: 7, embedding: Array.from({ length: 50 }, () => Math.random()) },
-  { game_id: 8, embedding: Array.from({ length: 50 }, () => Math.random()) },
-  { game_id: 9, embedding: Array.from({ length: 50 }, () => Math.random()) },
-  { game_id: 10, embedding: Array.from({ length: 50 }, () => Math.random()) },
-  { game_id: 11, embedding: Array.from({ length: 50 }, () => Math.random()) },
-  { game_id: 12, embedding: Array.from({ length: 50 }, () => Math.random()) },
-  { game_id: 13, embedding: Array.from({ length: 50 }, () => Math.random()) },
-  { game_id: 14, embedding: Array.from({ length: 50 }, () => Math.random()) },
-  { game_id: 15, embedding: Array.from({ length: 50 }, () => Math.random()) },
-]);
-
 const startDate = new Date();
 startDate.setDate(startDate.getDate() - 14); // Start date 14 days ago
 const numDays = 14; // Insert data for 14 days
@@ -25,13 +6,27 @@ const users = Array.from({ length: 10 }, (_, i) => i + 1); // user_id 1-10
 
 const interactions = [];
 
+const now = new Date(); // current time
+
 // Generate game interactions per day
-for (let d = 0; d < numDays; d++) {
+for (let d = 0; d <= numDays; d++) {
   const day = new Date(startDate);
   day.setDate(day.getDate() + d);
+
   const startOfDay = new Date(day);
+  startOfDay.setHours(0, 0, 0, 0);
+
+  // Use endOfDay = current time if this is today, otherwise end of day
   const endOfDay = new Date(day);
-  endOfDay.setHours(23, 59, 59, 999);
+  if (
+    day.getFullYear() === now.getFullYear() &&
+    day.getMonth() === now.getMonth() &&
+    day.getDate() === now.getDate()
+  ) {
+    endOfDay.setTime(now.getTime()); // cap to current time
+  } else {
+    endOfDay.setHours(23, 59, 59, 999); // regular end of day
+  }
 
   games.forEach((game_id) => {
     users.forEach((user_id) => {

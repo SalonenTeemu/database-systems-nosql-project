@@ -33,30 +33,6 @@ db.createCollection("game_interactions", {
   validationAction: "error",
 });
 
-// Create collection for game vector embeddings
-db.createCollection("game_vectors", {
-  validator: {
-    $jsonSchema: {
-      bsonType: "object",
-      required: ["game_id", "embedding"],
-      properties: {
-        game_id: {
-          bsonType: "int",
-        },
-        embedding: {
-          bsonType: "array",
-          items: {
-            bsonType: "double",
-          },
-          description: "Vector embedding for similarity search",
-        },
-      },
-    },
-  },
-  validationLevel: "strict",
-  validationAction: "error",
-});
-
 // Create collection for aggregated trending game statistics
 db.createCollection("game_trending_stats", {
   validator: {
