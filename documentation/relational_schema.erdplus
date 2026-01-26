@@ -620,8 +620,8 @@
         "id": "424009a7-c4b9-47a6-aa9b-9c5a5ecc472f",
         "type": "Table",
         "position": {
-          "x": 946.1895868399763,
-          "y": 506.148698354997
+          "x": 1083.1448963543194,
+          "y": 509.51645186764483
         },
         "data": {
           "label": "game_interactions",
@@ -690,39 +690,6 @@
         "dragging": false
       },
       {
-        "id": "8a887eb7-ea46-4cef-9410-006d8cf37854",
-        "type": "Table",
-        "position": {
-          "x": 1240,
-          "y": 505.07427792459964
-        },
-        "data": {
-          "label": "game_vectors",
-          "isConnectable": false,
-          "columns": [
-            {
-              "id": "8b0ae013-3c36-4f9f-b1e2-af445e0098b7",
-              "name": "game_id",
-              "type": "INT",
-              "position": 0
-            },
-            {
-              "id": "1eef0a4a-c8d1-4640-b8ed-737e653798e0",
-              "name": "embedding",
-              "type": "Custom",
-              "position": 0
-            }
-          ],
-          "isSelected": false
-        },
-        "measured": {
-          "width": 240,
-          "height": 76
-        },
-        "selected": false,
-        "dragging": false
-      },
-      {
         "id": "7e08af0a-3b6b-459f-9d2e-7829e9267204",
         "type": "Label",
         "position": {
@@ -744,8 +711,8 @@
         "id": "338613d9-8ebd-497a-9651-a4efb551cf86",
         "type": "Table",
         "position": {
-          "x": 1537.9813236395019,
-          "y": 507.1039890944396
+          "x": 1381.942077553488,
+          "y": 508.2265735986556
         },
         "data": {
           "label": "game_trending_stats",
@@ -1081,9 +1048,9 @@
       }
     ],
     "viewport": {
-      "x": -264.1928624897996,
-      "y": 109.97122689729918,
-      "zoom": 0.8705505632961245
+      "x": -346.46757800451496,
+      "y": 117.72274213803621,
+      "zoom": 0.8893932391876781
     }
   },
   "name": "Digital game distribution platform design",
@@ -1100,5 +1067,5 @@
     "id": 190275
   },
   "id": 219928,
-  "updatedAtTimestamp": 1769099614
+  "updatedAtTimestamp": 1769450862
 }
