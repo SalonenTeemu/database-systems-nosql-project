@@ -93,4 +93,29 @@ db.game_interactions.createIndex(
   { unique: true },
 );
 
+// Supports time-based aggregation
+db.game_interactions.createIndex({
+  created_at: -1,
+  game_id: 1,
+  type: 1,
+});
+
+// For grouping by game_id for engagement queries
+db.game_interactions.createIndex({
+  game_id: 1,
+  created_at: -1,
+});
+
+// For filtering by period
+db.game_trending_stats.createIndex({
+  period_type: 1,
+  period_key: 1,
+});
+
+// Unique index to prevent duplicate stats entries for the same game and period
+db.game_trending_stats.createIndex(
+  { game_id: 1, period_type: 1, period_key: 1 },
+  { unique: true }
+);
+
 print("MongoDB initialization completed successfully.");
