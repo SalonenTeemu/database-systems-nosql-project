@@ -75,7 +75,7 @@ WITH search_suggestions AS (
     JOIN countries c ON gp.country_code = c.country_code
     JOIN publishers p ON g.publisher_id = p.publisher_id
     WHERE 
-    (   g.title % :'search_term' -- Title term parameter (default 0.3 threshold)
+    (   g.title % :'search_term' -- Title term parameter (threshold changed to 0.2 in schema.sql)
         OR p.name % :'search_term' -- For publisher search
         OR g.description % :'search_term' -- For description search
     )
