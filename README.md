@@ -40,7 +40,7 @@ The `documentation/` folder contains:
 The `postgres/` folder contains:
 - Table creation statements
 - Data insertion statements
-- Queries for the first 10 project use 
+- Queries for the first 10 project use cases
 
 To access the PostgreSQL shell via Docker, run: `docker exec -it postgres psql -U admin -d game_store`.
 

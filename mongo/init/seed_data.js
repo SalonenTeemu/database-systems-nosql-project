@@ -2,7 +2,7 @@ const startDate = new Date();
 startDate.setDate(startDate.getDate() - 14); // Start date 14 days ago
 const numDays = 14; // Insert data for 14 days
 const games = Array.from({ length: 15 }, (_, i) => i + 1); // game_id 1-15
-const users = Array.from({ length: 10 }, (_, i) => i + 1); // user_id 1-10
+const users = Array.from({ length: 9 }, (_, i) => i + 2); // user_id 2-10 (user_id 1 is reserved for query examples)
 
 const interactions = [];
 
@@ -82,7 +82,7 @@ db.game_interactions.insertMany(interactions);
 
 // Aggregate daily stats from interactions
 const dailyStats = [];
-for (let d = 0; d < numDays; d++) {
+for (let d = 0; d <= numDays; d++) {
   const day = new Date(startDate);
   day.setDate(day.getDate() + d);
   const isoDate = day.toISOString().slice(0, 10);

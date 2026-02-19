@@ -3,7 +3,7 @@ CREATE EXTENSION IF NOT EXISTS "pg_trgm";
 CREATE EXTENSION IF NOT EXISTS "fuzzystrmatch";
 
 -- Set similarity lower threshold for pg_trgm searches for increased search results
-SET pg_trgm.similarity_threshold = 0.2;
+ALTER DATABASE "game_store" SET pg_trgm.similarity_threshold = 0.2;
 
 -- Tables --
 

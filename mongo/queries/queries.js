@@ -90,9 +90,9 @@ db.game_trending_stats.aggregate([
 
 // Find game details from PostgreSQL for the trending games
 `
-SELECT g.game_id, g.title, g.release_date
+SELECT g.game_id, g.title, g.description, g.release_date
 FROM games g
-WHERE g.game_id IN (X, Y, Z...); -- Game IDs from the previous MongoDB query results
+WHERE g.game_id IN (X, Y, Z...); -- Set game IDs from the previous MongoDB query results
 `;
 
 // Below is an example how the application might update the trending stats (day as an example period_type) using a cron job for example
@@ -124,7 +124,7 @@ const statsByGame = {};
 dailyStats.forEach(({ _id, count }) => {
   const { game_id, type } = _id;
 
-  // Initialize to 0 if not exists
+  // Initialize to 0 if doesn't exist
   if (!statsByGame[game_id]) {
     statsByGame[game_id] = { likes: 0, reviews: 0 };
   }
@@ -235,7 +235,7 @@ db.game_interactions.aggregate([
 
 // Find game details from PostgreSQL for the most engaged games
 `
-SELECT g.game_id, g.title, g.release_date
+SELECT g.game_id, g.title, g.description, g.release_date
 FROM games g
-WHERE g.game_id IN (X, Y, Z...); -- Game IDs from the previous MongoDB query results
+WHERE g.game_id IN (X, Y, Z...); -- Set game IDs from the previous MongoDB query results
 `;
